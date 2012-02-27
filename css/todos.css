@@ -54,10 +54,20 @@ body {
 }
 
 #top-bar a {
-	float: right;
 	color: white;
-	text-decoration: none;
 	padding: 10px 10px 0 0;
+}
+
+#add-list {
+	float: right;
+	text-decoration: none;
+}
+
+#doc {
+	float: left;
+	margin-left: 10px;
+	margin-top: 1px;
+	text-decoration: underline;
 }
 
 .task-list {
