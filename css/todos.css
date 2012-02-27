@@ -146,3 +146,16 @@ input:focus {
 .clear {
 	clear: both;
 }
+
+.list-options a{
+	color: black;
+	margin-top: 15px;
+}
+
+.delete-list {
+	float: right;
+}
+
+.remove-cleared {
+	float: left;
+}
