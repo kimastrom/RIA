@@ -2,9 +2,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'collections/tasks',
     'text!templates/todoTask.html'
-    ], function($, _, Backbone, TaskCollection, taskTemplate){
+    ], function($, _, Backbone, taskTemplate){
     var task = Backbone.View.extend({
 
         // task is a list tag

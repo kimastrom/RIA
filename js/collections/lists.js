@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'libs/backbone/localstorage',
+    'localstorage',
     'models/list'
     ], function(Backbone, Store, List) {
         var ListCollection = Backbone.Collection.extend({

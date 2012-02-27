@@ -1,9 +1,8 @@
 define([
     'underscore',
     'backbone',
-    'collections/tasks',
-    'models/task'
-    ], function(_, Backbone, TaskCollection, TaskModel){
+    'collections/tasks'
+    ], function(_, Backbone, TaskCollection){
         var list = Backbone.Model.extend({
             
             // collection of tasks

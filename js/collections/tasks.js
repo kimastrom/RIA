@@ -1,7 +1,7 @@
 define([
     'underscore',
     'backbone',
-    'libs/backbone/localStorage',
+    'localstorage',
     'models/task'
     ], function(_, Backbone, Store, Task) {
         var TaskCollection = Backbone.Collection.extend({
