@@ -11,9 +11,7 @@ define([
         //template for list
         template: _.template(listTemplate),
 
-        /**
-         * define all events
-         */
+        // define all events
         events: {
             "keypress .add-task-textinput"  : "addTaskOnEnter",
             "dblclick .title h1"            : "editTitle",
@@ -22,9 +20,7 @@ define([
             "click .delete-list"            : "deleteList"
         },
 
-        /**
-         * initiliazes the view
-         */
+        // initiliazes the view
         initialize: function() {
             
             $("#todoapp").append($(this.el).html(this.template));
@@ -35,48 +31,35 @@ define([
             this.model.taskCollection.fetch({});
         },
 
-        /**
-         * set content on list
-         */
+        // set content on list
         render: function() {
             this.setContent();
             return this;
         },
 
-        /**
-         * Sets the title of list
-         */
+        // set title of list
         setContent: function() {
             var title = this.model.get('title');
             this.$('.title h1').text(title);
         },
 
-        /**
-         * create view for task and add task to DOM
-         * @param task object
-         */
+        // create view for `task` and add task to DOM
         addOne: function(task) {
             view = new TaskView({model: task});
             this.$(".list-content").append(view.render().el);
         },
 
-        /**
-         * hämtar alla tasks och renderar dem via funktionen addOne
-         */
+        // hämtar alla tasks och renderar dem via funktionen addOne
         addAll: function() {
             this.model.taskCollection.each(this.addOne);
         },
 
-        /**
-         * deletes all finished tasks
-         */
+        // deletes all finished tasks
         removeCleared: function() {
             _.each(this.model.taskCollection.done(), function(task){ task.clear(); });
         },
 
-        /**
-         * add new task
-         */
+        // Add new task
         addTaskOnEnter: function(e) {
             if (e.keyCode === 13 && this.$(".add-task-textinput").val().length > 0 ) {
                 var taskText = this.$(".add-task-textinput").val();
@@ -85,9 +68,7 @@ define([
             }
         },
 
-        /**
-         *  change to edit view of list title
-         */
+        // change to edit view of list title
         editTitle: function(e) {
             this.$('.title h1').hide();
             this.$('.title').append("<input class='edit-title' type='text' value='"+this.model.get('title')+"' />");
@@ -95,29 +76,23 @@ define([
             this.$('.edit-title').bind('blur', this.closeTitleEdit);
         },
 
-        /**
-         * save the changes and closes the edit view
-         */
+        // save the changes and closes the edit view
         closeTitleEdit: function() {
             var title = this.$('.edit-title').val();
-            this.model.save({title: title});
+            if(title.length > 0) { this.model.save({title: title});}
             this.$('.edit-title').remove();
             this.$('.title h1').text(this.model.get('title'));
             this.$('.title h1').show();
         },
 
-        /**
-         * close edit view on key event
-         */
+        // close edit view on key event
         saveTitle: function(e) {
             if (e.keyCode === 13) {
                 this.closeTitleEdit();
             }
         },
 
-        /**
-         * delete list
-         */
+        // delete list
         deleteList: function() {
             this.model.taskCollection.destroy();
             this.model.destroy();

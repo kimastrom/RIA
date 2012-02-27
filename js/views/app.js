@@ -9,13 +9,12 @@ define([
         
         el: $('body'),
 
+        // Define events on view
         events: {
             "click #add-list" : "addListOnClick"
         },
 
-        /**
-         * Initializes the view
-         */
+        // Initializes the view
         initialize: function() {
             _.bindAll(this, 'addAll', 'addOne');
             ListCollection.bind('reset', this.addAll);
@@ -23,24 +22,18 @@ define([
             ListCollection.fetch({});
         },
 
-        /**
-         * @param list, list object
-         */
+        // Add one `list`
         addOne: function(list) {
             view = new ListView({model: list});
             view.render();
         },
 
-        /**
-         * hämtar alla listor och renderar dem via funktionen addOne
-         */
+        // hämtar alla listor och renderar dem via funktionen addOne
         addAll: function() {
             ListCollection.each(this.addOne);
         },
 
-        /**
-         * Creates a new list object on click event
-         */
+        // Creates a new list object on click event
         addListOnClick: function(e) {
             ListCollection.create({title: 'default title'});
             this.$('#todoapp').children().remove();

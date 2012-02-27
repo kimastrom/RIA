@@ -1,7 +1,4 @@
-// Filename: main.js
-
-// Require.js allows us to configure mappings to paths
-// as demonstrated below:
+// Configurerar require
 require.config({
   paths: {
     jquery: 'libs/jquery/jquery-min',
