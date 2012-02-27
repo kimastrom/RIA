@@ -3,9 +3,8 @@ define([
     'underscore',
     'backbone',
     'views/task',
-    'collections/tasks',
     'text!templates/todoList.html'
-    ], function($, _, Backbone, TaskView, TaskCollection, listTemplate){
+    ], function($, _, Backbone, TaskView, listTemplate){
     var list = Backbone.View.extend({
 
         //template for list
