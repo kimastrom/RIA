@@ -63,6 +63,11 @@ body {
 	text-decoration: none;
 }
 
+#add-list-input {
+	float: right;
+	margin: 9px 9px 0 0;
+}
+
 #doc {
 	float: left;
 	margin-left: 10px;

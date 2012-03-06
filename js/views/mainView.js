@@ -11,7 +11,8 @@ define([
 
         // Define events on view
         events: {
-            "click #add-list" : "addListOnClick"
+            "click #add-list" : "addListOnClick",
+            "keypress #add-list-input" : "addListOnClick"
         },
 
         // Initializes the view
@@ -35,11 +36,15 @@ define([
 
         // Creates a new list object on click event
         addListOnClick: function(e) {
-            ListCollection.create({title: 'default title'});
+            if (this.$('#add-list-input').val() === '') return;
+            if (e.keyCode !== undefined && e.keyCode !== 13) return;
+
+            ListCollection.create({title: this.$('#add-list-input').val()});
+            this.$('#add-list-input').val('');
+            this.$('#add-list-input').blur();
             this.$('#todoapp').children().remove();
             this.addAll();
         }
-
     });
     return mainView;
 });
