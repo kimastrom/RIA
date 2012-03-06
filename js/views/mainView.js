@@ -5,7 +5,7 @@ define([
     'collections/lists',
     'views/list'
     ], function($, _, Backbone, ListCollection, ListView){
-        var todoView = Backbone.View.extend({
+        var mainView = Backbone.View.extend({
         
         el: $('body'),
 
@@ -41,5 +41,5 @@ define([
         }
 
     });
-    return todoView;
+    return mainView;
 });

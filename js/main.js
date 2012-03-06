@@ -10,6 +10,6 @@ require.config({
 
 });
 
-require(['views/app'], function(app){
-  var app_view = new app;
+require(['views/mainView'], function(mainView){
+  var main_view = new mainView;
 });
