@@ -53,15 +53,24 @@ define([
             this.$('.task-status').after("<input type='text' class='edit' value='"+this.model.get('content')+"'/>");
             this.$('.edit').focus();
             this.$('.edit').bind('blur', this.closeEdit);
-
         },
 
         // close edit view on task
         closeEdit: function() {
             var taskText = this.$('.edit').val();
-            if(taskText.length > 0){this.model.save({content: taskText});}
+            if(taskText.length > 0){
+            	this.model.save({content: taskText},{
+            		error: function(model,response){$('#msg').append('<p class="msg">' + response + '</p>')}}
+				);
+        	}	
             this.$('.edit').remove();
             this.$('.task-status').after("<p class='task-text'>"+this.model.get('content')+"</p>");
+            
+            //Nice message fadeout :) and then remove it.
+            $('.msg').delay(7000).fadeOut();
+            setTimeout(function() {
+  				$('.msg').remove();
+			}, 8000);
         },
 
         // close edit view on key event

@@ -62,9 +62,16 @@ define([
         addTaskOnEnter: function(e) {
             if (e.keyCode === 13 && this.$(".add-task-textinput").val().length > 0 ) {
                 var taskText = this.$(".add-task-textinput").val();
-                this.model.taskCollection.create({content: taskText});
+                this.model.taskCollection.create({content: taskText},{
+            		error: function(model,response){$('#msg').append('<p class="msg">' + response + '</p>')}}
+        		);
                 this.$(".add-task-textinput").val('');
-            }
+                //Nice message fadeout :) and then remove it.
+		        $('.msg').delay(6000).fadeOut();
+		            setTimeout(function() {
+		  				$('.msg').remove();
+				}, 7000);
+		    }
         },
 
         // change to edit view of list title

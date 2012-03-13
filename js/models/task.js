@@ -24,7 +24,12 @@ define([
             clear: function() {
                 this.destroy();
                 this.view.remove();
-            }
+            },
+            validate: function(attr) {
+            	if(attr.content.length > 20) { 
+            		return ('Are you an author maybe? This is a todo, please write a bit shorter. Only 20 characters allowed!'); 
+        		}
+        	}
   });
   return task;
 });
